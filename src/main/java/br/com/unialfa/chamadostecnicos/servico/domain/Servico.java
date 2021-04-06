@@ -6,8 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Entity
-public class Servico implements Serializable {
+@Entity public class Servico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

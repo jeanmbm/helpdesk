@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping(path = "/api/categoria")
 public class CategoriaController {
+
 
     @Autowired
     private CategoriaBusiness categoriaBusiness;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Categoria> listarCLiente() {
+    public Iterable<Categoria> listarCategoria() {
         return categoriaBusiness.listarCategoria();
     }
 

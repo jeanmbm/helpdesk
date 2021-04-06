@@ -1,13 +1,14 @@
-package br.com.unialfa.chamadostecnicos.categoriaservico.domain;
+package br.com.unialfa.chamadostecnicos.departamento.domain;
 
-import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
+
+import br.com.unialfa.chamadostecnicos.usuario.domain.Usuario;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 
-@Entity public class Categoria implements Serializable {
+@Entity public class Departamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,16 +17,10 @@ import java.util.List;
     private String descricao;
 
     @OneToMany
-    private List<Servico> servicos;
+    private List<Usuario> usuarios;
 
 
-    public Categoria() {
-    }
-
-    public Categoria(long id, String nome, String descricao) {
-        Id = id;
-        this.nome = nome;
-        this.descricao = descricao;
+    public Departamento() {
     }
 
 
@@ -53,11 +48,11 @@ import java.util.List;
         this.descricao = descricao;
     }
 
-    public List<Servico> getServicos() {
-        return servicos;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

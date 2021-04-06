@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Service
-public class CategoriaBusiness {
+@Service public class CategoriaBusiness {
 
-    @Autowired
-    private CategoriaRepository categoriaRepository;
+    @Autowired private CategoriaRepository categoriaRepository;
 
     public void cadastrarCategoria(Categoria categoria) {
         categoriaRepository.save(categoria);
