@@ -2,6 +2,9 @@ package br.com.unialfa.chamadostecnicos;
 
 import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
 import br.com.unialfa.chamadostecnicos.categoriaservico.repository.CategoriaRepository;
+import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
+import br.com.unialfa.chamadostecnicos.chamado.domain.Status;
+import br.com.unialfa.chamadostecnicos.chamado.repository.ChamadoRepository;
 import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import br.com.unialfa.chamadostecnicos.departamento.repository.DepartamentoRepository;
 import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
@@ -16,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDate;
 
 
 @SpringBootApplication
@@ -36,6 +41,9 @@ public class ChamadostecnicosApplication {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private ChamadoRepository chamadoRepository;
 
 
 	public static void main(String[] args) {
@@ -77,6 +85,16 @@ public class ChamadostecnicosApplication {
 		usuario.setTecnico(true);
 		usuario.setEspecialidade(especialidade);
 		usuarioRepository.save(usuario);
+
+		Chamado chamado = new Chamado();
+		chamado.setDataAbertura(LocalDate.now());
+		chamado.setPrazoSolucao(LocalDate.now());
+		chamado.setDataSolucao(LocalDate.now());
+		chamado.setMensagem("Problema no computador");
+		chamado.setServico(servico);
+		chamado.setStatus(Status.ANALISE);
+		chamado.setUsuario(usuario);
+		chamadoRepository.save(chamado);
 
 		return null;
 	}

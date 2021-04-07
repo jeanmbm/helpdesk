@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/usuario")
 public class UsuarioController {
 
+
     @Autowired private UsuarioBusiness usuarioBusiness;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Usuario> listarUsuario() {
-        return usuarioBusiness.listarUsuario();
-    }
 
     @PostMapping(path = "/add")
     public void cadastarUsuario(@RequestBody Usuario usuario) {
         usuarioBusiness.cadastrarUsuario(usuario);
     }
 
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Usuario> listarUsuario() {
+        return usuarioBusiness.listarUsuario();
+    }
+
     @PutMapping(path = "/edit")
-    public void editarUsuario(@RequestBody Usuario usuario) {
+    public void editarUsuario(@RequestBody Usuario usuario) {      // Não poderá ser editado email e cpf
         usuarioBusiness.editarUsuario(usuario);
     }
 
@@ -32,7 +34,5 @@ public class UsuarioController {
     public @ResponseBody void deletarUsuario(@PathVariable(name = "id") long id){
         usuarioBusiness.deletarUsuario(id);
     }
-
-
 
 }

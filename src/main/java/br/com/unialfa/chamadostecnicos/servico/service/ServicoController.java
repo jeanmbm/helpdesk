@@ -27,7 +27,7 @@ public class ServicoController {
 
     @PutMapping(path = "/edit")
     public void editarServico(@RequestBody Servico servico) {
-        servicoBusiness.cadastrarServico(servico);
+        servicoBusiness.editarServico(servico);
     }
 
     @DeleteMapping(value = "/delete/{id}")

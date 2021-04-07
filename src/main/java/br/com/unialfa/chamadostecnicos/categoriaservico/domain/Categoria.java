@@ -12,6 +12,8 @@ import java.util.List;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
+
+    @Column(nullable = false, unique = true)
     private String nome;
     private String descricao;
 

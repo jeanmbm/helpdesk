@@ -1,9 +1,11 @@
 package br.com.unialfa.chamadostecnicos.servico.domain;
 
 import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
+import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity public class Servico implements Serializable {
@@ -11,12 +13,17 @@ import java.io.Serializable;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(nullable = false, unique = true)
     private String nome;
     private String descricao;
     private Prioridade prioridade;
 
     @ManyToOne
     private Categoria categoria;
+
+    @OneToOne
+    private Chamado chamado;
 
 
     public Servico() {
@@ -61,5 +68,13 @@ import java.io.Serializable;
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Chamado getChamado() {
+        return chamado;
+    }
+
+    public void setChamado(Chamado chamado) {
+        this.chamado = chamado;
     }
 }

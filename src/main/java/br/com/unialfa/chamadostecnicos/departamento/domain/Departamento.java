@@ -13,6 +13,8 @@ import java.util.List;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
+
+    @Column(unique = true, nullable = false)
     private String nome;
     private String descricao;
 

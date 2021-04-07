@@ -1,5 +1,6 @@
 package br.com.unialfa.chamadostecnicos.usuario.domain;
 
+import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
 import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
 
@@ -12,14 +13,18 @@ import java.io.Serializable;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(nullable = false)
     private String nome;
     private String telefone;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cpf;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, updatable = false)
     private String email;
+
+    @Column(nullable = false)
     private String senha;
 
     @ManyToOne
@@ -29,6 +34,9 @@ import java.io.Serializable;
 
     @ManyToOne
     private Especialidade especialidade;
+
+    @OneToOne
+    private Chamado chamado;
 
 
     public Usuario() {
@@ -117,5 +125,13 @@ import java.io.Serializable;
 
     public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public Chamado getChamado() {
+        return chamado;
+    }
+
+    public void setChamado(Chamado chamado) {
+        this.chamado = chamado;
     }
 }

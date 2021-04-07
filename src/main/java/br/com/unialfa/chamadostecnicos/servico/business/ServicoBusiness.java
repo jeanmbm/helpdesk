@@ -1,6 +1,5 @@
 package br.com.unialfa.chamadostecnicos.servico.business;
 
-import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
 import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
 import br.com.unialfa.chamadostecnicos.servico.repository.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
