@@ -14,15 +14,14 @@ public class ServicoController {
     @Autowired
     private ServicoBusiness servicoBusiness;
 
+    @PostMapping(path = "/add")
+    public void cadastarServico(@RequestBody Servico servico) {
+        servicoBusiness.cadastrarServico(servico);
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Servico> listarServico() {
         return servicoBusiness.listarServico();
-    }
-
-    @PostMapping(path = "/add")
-    public void cadastarServico(@RequestBody Servico servico) {
-        servicoBusiness.cadastrarServico(servico);
     }
 
     @PutMapping(path = "/edit")

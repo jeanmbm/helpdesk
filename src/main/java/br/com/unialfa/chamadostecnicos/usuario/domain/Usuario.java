@@ -6,6 +6,7 @@ import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity public class Usuario implements Serializable {
@@ -14,11 +15,11 @@ import java.io.Serializable;
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private String nome;
     private String telefone;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, updatable = false)
     private String cpf;
 
     @Column(unique = true, nullable = false, updatable = false)
@@ -35,8 +36,8 @@ import java.io.Serializable;
     @ManyToOne
     private Especialidade especialidade;
 
-    @OneToOne
-    private Chamado chamado;
+    @OneToMany
+    private List<Chamado> chamados;
 
 
     public Usuario() {
@@ -127,11 +128,11 @@ import java.io.Serializable;
         this.especialidade = especialidade;
     }
 
-    public Chamado getChamado() {
-        return chamado;
+    public List<Chamado> getChamados() {
+        return chamados;
     }
 
-    public void setChamado(Chamado chamado) {
-        this.chamado = chamado;
+    public void setChamados(List<Chamado> chamados) {
+        this.chamados = chamados;
     }
 }

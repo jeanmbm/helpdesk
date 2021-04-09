@@ -22,7 +22,7 @@ public class Chamado implements Serializable {
     @Column(nullable = false, updatable = false)
     private LocalDate prazoSolucao;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false)
     private LocalDate dataSolucao;
 
     @Column(nullable = false)

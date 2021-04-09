@@ -16,12 +16,11 @@ import java.util.InputMismatchException;
     public void cadastrarUsuario(Usuario usuario) {
         if (isCPF(usuario.getCpf())) {
             if (!usuario.isTecnico()) {
-                usuario.setTecnico(false);
                 usuario.setEspecialidade(null);
             }
             usuarioRepository.save(usuario);
         } else {
-            System.out.println("!! CPF inválido !!");
+            System.err.println("!! CPF inválido !!");
         }
     }
 

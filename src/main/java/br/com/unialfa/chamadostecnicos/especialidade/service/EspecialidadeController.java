@@ -15,14 +15,14 @@ public class EspecialidadeController {
     @Autowired
     private EspecialidadeBusiness especialidadeBusiness;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Especialidade> listarEspecialidade() {
-        return especialidadeBusiness.listarEspecialidade();
-    }
-
     @PostMapping(path = "/add")
     public void cadastarEspecialidade(@RequestBody Especialidade especialidade) {
         especialidadeBusiness.cadastrarEspecialidade(especialidade);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Especialidade> listarEspecialidade() {
+        return especialidadeBusiness.listarEspecialidade();
     }
 
     @PutMapping(path = "/edit")

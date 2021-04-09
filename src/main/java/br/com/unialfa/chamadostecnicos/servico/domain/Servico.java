@@ -17,13 +17,18 @@ import java.util.List;
     @Column(nullable = false, unique = true)
     private String nome;
     private String descricao;
+
+    @Column(nullable = false)
     private Prioridade prioridade;
+
+    @Column(nullable = false)
+    private Area area;
 
     @ManyToOne
     private Categoria categoria;
 
-    @OneToOne
-    private Chamado chamado;
+    @OneToMany
+    private List<Chamado> chamados;
 
 
     public Servico() {
@@ -70,11 +75,19 @@ import java.util.List;
         this.categoria = categoria;
     }
 
-    public Chamado getChamado() {
-        return chamado;
+    public List<Chamado> getChamados() {
+        return chamados;
     }
 
-    public void setChamado(Chamado chamado) {
-        this.chamado = chamado;
+    public void setChamados(List<Chamado> chamados) {
+        this.chamados = chamados;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
     }
 }

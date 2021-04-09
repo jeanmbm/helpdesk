@@ -15,14 +15,14 @@ public class DepartamentoController {
     @Autowired
     private DepartamentoBusiness departamentoBusiness;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Departamento> listarDepartamento() {
-        return departamentoBusiness.listarDepartamento();
-    }
-
     @PostMapping(path = "/add")
     public void cadastarDepartamento(@RequestBody Departamento departamento) {
         departamentoBusiness.cadastrarDepartamento(departamento);
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Departamento> listarDepartamento() {
+        return departamentoBusiness.listarDepartamento();
     }
 
     @PutMapping(path = "/edit")

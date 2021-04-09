@@ -9,6 +9,7 @@ import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import br.com.unialfa.chamadostecnicos.departamento.repository.DepartamentoRepository;
 import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
 import br.com.unialfa.chamadostecnicos.especialidade.repository.EspecialidadeRepository;
+import br.com.unialfa.chamadostecnicos.servico.domain.Area;
 import br.com.unialfa.chamadostecnicos.servico.domain.Prioridade;
 import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
 import br.com.unialfa.chamadostecnicos.servico.repository.ServicoRepository;
@@ -63,6 +64,7 @@ public class ChamadostecnicosApplication {
 		servico.setDescricao("Bibendum curabitur donec cubilia, magna.");
 		servico.setPrioridade(Prioridade.BAIXA);
 		servico.setCategoria(categoria);
+		servico.setArea(Area.SOFTWARE);
 		servicoRepository.save(servico);
 
 		Departamento departamento = new Departamento();
@@ -73,6 +75,7 @@ public class ChamadostecnicosApplication {
 		Especialidade especialidade = new Especialidade();
 		especialidade.setNome("Especialidade teste");
 		especialidade.setDescricao("Sit platea et etiam, sem.");
+		especialidade.setArea(Area.SOFTWARE);
 		especialidadeRepository.save(especialidade);
 
 		Usuario usuario = new Usuario();
@@ -86,7 +89,7 @@ public class ChamadostecnicosApplication {
 		usuario.setEspecialidade(especialidade);
 		usuarioRepository.save(usuario);
 
-		Chamado chamado = new Chamado();
+		Chamado chamado = new Chamado();  //só poderá ser atualizado o status
 		chamado.setDataAbertura(LocalDate.now());
 		chamado.setPrazoSolucao(LocalDate.now());
 		chamado.setDataSolucao(LocalDate.now());
