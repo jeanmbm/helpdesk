@@ -2,6 +2,8 @@ package br.com.unialfa.chamadostecnicos.servico.domain;
 
 import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
 import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
+import br.com.unialfa.chamadostecnicos.enuns.Area;
+import br.com.unialfa.chamadostecnicos.enuns.Prioridade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ import java.util.List;
 
     @Column(nullable = false, unique = true)
     private String nome;
+
     private String descricao;
 
     @Column(nullable = false)

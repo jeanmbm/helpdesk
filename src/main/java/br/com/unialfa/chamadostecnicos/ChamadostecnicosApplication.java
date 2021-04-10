@@ -1,16 +1,20 @@
 package br.com.unialfa.chamadostecnicos;
 
+import br.com.unialfa.chamadostecnicos.acompanhamento.domain.Acompanhamento;
+import br.com.unialfa.chamadostecnicos.acompanhamento.domain.Avaliacao;
+import br.com.unialfa.chamadostecnicos.acompanhamento.repository.AcompanhamentoRepository;
+import br.com.unialfa.chamadostecnicos.acompanhamento.repository.AvaliacaoRepository;
 import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
 import br.com.unialfa.chamadostecnicos.categoriaservico.repository.CategoriaRepository;
 import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
-import br.com.unialfa.chamadostecnicos.chamado.domain.Status;
+import br.com.unialfa.chamadostecnicos.enuns.Status;
 import br.com.unialfa.chamadostecnicos.chamado.repository.ChamadoRepository;
 import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import br.com.unialfa.chamadostecnicos.departamento.repository.DepartamentoRepository;
 import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
 import br.com.unialfa.chamadostecnicos.especialidade.repository.EspecialidadeRepository;
-import br.com.unialfa.chamadostecnicos.servico.domain.Area;
-import br.com.unialfa.chamadostecnicos.servico.domain.Prioridade;
+import br.com.unialfa.chamadostecnicos.enuns.Area;
+import br.com.unialfa.chamadostecnicos.enuns.Prioridade;
 import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
 import br.com.unialfa.chamadostecnicos.servico.repository.ServicoRepository;
 import br.com.unialfa.chamadostecnicos.usuario.domain.Usuario;
@@ -45,6 +49,12 @@ public class ChamadostecnicosApplication {
 
 	@Autowired
 	private ChamadoRepository chamadoRepository;
+
+	@Autowired
+	private AvaliacaoRepository avaliacaoRepository;
+
+	@Autowired
+	private AcompanhamentoRepository acompanhamentoRepository;
 
 
 	public static void main(String[] args) {
@@ -91,13 +101,28 @@ public class ChamadostecnicosApplication {
 
 		Chamado chamado = new Chamado();  //só poderá ser atualizado o status
 		chamado.setDataAbertura(LocalDate.now());
-		chamado.setPrazoSolucao(LocalDate.now());
-		chamado.setDataSolucao(LocalDate.now());
+		chamado.setPrazoSolucao(LocalDate.now().plusDays(20));
+		chamado.setDataSolucao(LocalDate.now().plusDays(10));
 		chamado.setMensagem("Problema no computador");
 		chamado.setServico(servico);
 		chamado.setStatus(Status.ANALISE);
 		chamado.setUsuario(usuario);
 		chamadoRepository.save(chamado);
+
+		Avaliacao avaliacao = new Avaliacao();
+		avaliacao.setDataAvaliacao(LocalDate.now());
+		avaliacao.setComentario("Ótimo atendimento");
+		avaliacao.setQuantEstrelas(5);
+		avaliacaoRepository.save(avaliacao);
+
+		Acompanhamento acompanhamento = new Acompanhamento();
+		acompanhamento.setChamado(chamado);
+		acompanhamento.setAvaliacao(avaliacao);
+		acompanhamento.setTecnico(usuario);
+		acompanhamento.setChamado(chamado);
+		acompanhamento.setFinalizadoTecnico(false);
+		acompanhamento.setFinalizadoUsuario(false);
+		acompanhamentoRepository.save(acompanhamento);
 
 		return null;
 	}

@@ -1,10 +1,11 @@
-package br.com.unialfa.chamadostecnicos.chamado.domain;
+package br.com.unialfa.chamadostecnicos.acompanhamento.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-public class Avaliacao {
+public class Avaliacao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

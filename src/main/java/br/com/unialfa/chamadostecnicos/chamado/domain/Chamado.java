@@ -1,6 +1,7 @@
 package br.com.unialfa.chamadostecnicos.chamado.domain;
 
 
+import br.com.unialfa.chamadostecnicos.enuns.Status;
 import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
 import br.com.unialfa.chamadostecnicos.usuario.domain.Usuario;
 

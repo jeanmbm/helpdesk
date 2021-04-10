@@ -7,20 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Service public class UsuarioBusiness {
 
+
     @Autowired private UsuarioRepository usuarioRepository;
 
     public void cadastrarUsuario(Usuario usuario) {
-        if (isCPF(usuario.getCpf())) {
+        if (isCPF(usuario.getCpf()) && isEmail(usuario.getEmail())) {
             if (!usuario.isTecnico()) {
                 usuario.setEspecialidade(null);
             }
             usuarioRepository.save(usuario);
         } else {
-            System.err.println("!! CPF inválido !!");
+            System.err.println("!! CPF e/ou Email inválido(s) !!");
         }
     }
 
@@ -29,6 +32,9 @@ import java.util.InputMismatchException;
     }
 
     public void editarUsuario(Usuario usuario) {
+        if (!usuario.isTecnico()) {
+            usuario.setEspecialidade(null);
+        }
         usuarioRepository.save(usuario);
     }
 
@@ -92,6 +98,20 @@ import java.util.InputMismatchException;
         } catch (InputMismatchException erro) {
             return(false);
         }
+    }
+
+
+    public static boolean isEmail(String email) {
+        boolean isEmailIdValid = false;
+        if (email != null && email.length() > 0) {
+            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+                isEmailIdValid = true;
+            }
+        }
+        return isEmailIdValid;
     }
 
 }

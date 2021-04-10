@@ -1,4 +1,4 @@
-package br.com.unialfa.chamadostecnicos.chamado.domain;
+package br.com.unialfa.chamadostecnicos.enuns;
 
 public enum Status {
 

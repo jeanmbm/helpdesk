@@ -1,6 +1,6 @@
 package br.com.unialfa.chamadostecnicos.especialidade.domain;
 
-import br.com.unialfa.chamadostecnicos.servico.domain.Area;
+import br.com.unialfa.chamadostecnicos.enuns.Area;
 import br.com.unialfa.chamadostecnicos.usuario.domain.Usuario;
 
 import javax.persistence.*;

@@ -1,5 +1,6 @@
 package br.com.unialfa.chamadostecnicos.usuario.domain;
 
+import br.com.unialfa.chamadostecnicos.acompanhamento.domain.Acompanhamento;
 import br.com.unialfa.chamadostecnicos.chamado.domain.Chamado;
 import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import br.com.unialfa.chamadostecnicos.especialidade.domain.Especialidade;
@@ -38,6 +39,9 @@ import java.util.List;
 
     @OneToMany
     private List<Chamado> chamados;
+
+    @OneToMany
+    private List<Acompanhamento> acompanhamentos;
 
 
     public Usuario() {
@@ -135,4 +139,13 @@ import java.util.List;
     public void setChamados(List<Chamado> chamados) {
         this.chamados = chamados;
     }
+
+    public List<Acompanhamento> getAcompanhamentos() {
+        return acompanhamentos;
+    }
+
+    public void setAcompanhamentos(List<Acompanhamento> acompanhamentos) {
+        this.acompanhamentos = acompanhamentos;
+    }
+
 }

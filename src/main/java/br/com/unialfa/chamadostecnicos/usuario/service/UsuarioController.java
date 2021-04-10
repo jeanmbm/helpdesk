@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @PutMapping(path = "/edit")
-    public void editarUsuario(@RequestBody Usuario usuario) {      // Não poderá ser editado email e cpf
+    public void editarUsuario(@RequestBody Usuario usuario) {      // Não poderá ser editado email, cpf e nome
         usuarioBusiness.editarUsuario(usuario);
     }
 
