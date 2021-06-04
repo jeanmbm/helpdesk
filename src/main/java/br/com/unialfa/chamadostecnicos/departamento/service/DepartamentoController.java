@@ -36,8 +36,8 @@ public class DepartamentoController {
     }
 
     @GetMapping(path = "/{idDepartamento}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Departamento> departamentoPorId(@PathVariable (name = "idDepartamento") long id) {
-        return departamentoBusiness.departamentoPorId(id);
+    public Optional<Departamento> buscarDepartamentoPorId(@PathVariable (name = "idDepartamento") long id) {
+        return departamentoBusiness.buscarDepartamentoPorId(id);
     }
 
     @PutMapping(path = "/edit")

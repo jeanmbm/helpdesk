@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Optional;
+
 @Service
 public class ServicoBusiness {
 
@@ -18,6 +20,10 @@ public class ServicoBusiness {
 
     public Iterable<Servico> listarServico() {
         return servicoRepository.findAll();
+    }
+
+    public Optional<Servico> buscarServicoPorId(long id) {
+        return servicoRepository.findById(id);
     }
 
     public void editarServico(Servico servico) {

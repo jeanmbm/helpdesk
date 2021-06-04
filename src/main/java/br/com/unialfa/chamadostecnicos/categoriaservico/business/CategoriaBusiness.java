@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Optional;
+
 @Service public class CategoriaBusiness {
 
     @Autowired private CategoriaRepository categoriaRepository;
@@ -16,6 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
     public Iterable<Categoria> listarCategoria() {
         return categoriaRepository.findAll();
+    }
+
+    public Optional<Categoria> buscarCategoriaPorId(long id) {
+        return categoriaRepository.findById(id);
     }
 
     public void editarCategoria(Categoria categoria) {

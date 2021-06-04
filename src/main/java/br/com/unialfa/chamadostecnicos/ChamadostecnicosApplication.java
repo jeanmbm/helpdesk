@@ -90,8 +90,8 @@ public class ChamadostecnicosApplication {
 
 		Usuario usuario = new Usuario();
 		usuario.setNome("José da Silva");
-		usuario.setTelefone("(62) 99999-9999");
-		usuario.setCpf("111.111.111-11");
+		usuario.setTelefone("62963271386");
+		usuario.setCpf("38775589095");
 		usuario.setEmail("emailteste@gmail.com");
 		usuario.setSenha("123456");
 		usuario.setDepartamento(departamento);
@@ -105,7 +105,7 @@ public class ChamadostecnicosApplication {
 		chamado.setDataSolucao(LocalDate.now().plusDays(10));
 		chamado.setMensagem("Problema no computador");
 		chamado.setServico(servico);
-		chamado.setStatus(Status.ANALISE);
+		chamado.setStatus(Status.CONCLUIDO);
 		chamado.setUsuario(usuario);
 		chamadoRepository.save(chamado);
 

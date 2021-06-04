@@ -2,11 +2,14 @@ package br.com.unialfa.chamadostecnicos.categoriaservico.service;
 
 import br.com.unialfa.chamadostecnicos.categoriaservico.business.CategoriaBusiness;
 import br.com.unialfa.chamadostecnicos.categoriaservico.domain.Categoria;
+import br.com.unialfa.chamadostecnicos.departamento.domain.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -33,6 +36,10 @@ public class CategoriaController {
         return categoriaBusiness.listarCategoria();
     }
 
+    @GetMapping(path = "/{idCategoria}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<Categoria> buscarCategoriaPorId(@PathVariable (name = "idCategoria") long id) {
+        return categoriaBusiness.buscarCategoriaPorId(id);
+    }
 
     @PutMapping(path = "/edit")
     public void editarCategoria(@RequestBody Categoria categoria) {

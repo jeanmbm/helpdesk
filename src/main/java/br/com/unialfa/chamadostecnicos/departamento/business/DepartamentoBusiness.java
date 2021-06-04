@@ -22,7 +22,7 @@ public class DepartamentoBusiness {
         return departamentoRepository.findAll();
     }
 
-    public Optional<Departamento> departamentoPorId(long id) {
+    public Optional<Departamento> buscarDepartamentoPorId(long id) {
         return departamentoRepository.findById(id);
     }
 
