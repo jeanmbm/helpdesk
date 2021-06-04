@@ -3,7 +3,9 @@ package br.com.unialfa.chamadostecnicos.servico.service;
 import br.com.unialfa.chamadostecnicos.servico.business.ServicoBusiness;
 import br.com.unialfa.chamadostecnicos.servico.domain.Servico;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -17,8 +19,13 @@ public class ServicoController {
     private ServicoBusiness servicoBusiness;
 
     @PostMapping(path = "/add")
-    public void cadastarServico(@RequestBody Servico servico) {
-        servicoBusiness.cadastrarServico(servico);
+    public ResponseEntity<?> cadastarServico(@RequestBody Servico servico) {
+        try {
+            servicoBusiness.cadastrarServico(servico);
+            return new ResponseEntity<>(servico, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

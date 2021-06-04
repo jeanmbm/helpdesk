@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +30,10 @@ import java.util.regex.Pattern;
 
     public Iterable<Usuario> listarUsuario() {
         return usuarioRepository.findAll();
+    }
+
+    public Optional<Usuario> buscarUsuarioPorId(long id) {
+        return usuarioRepository.findById(id);
     }
 
     public void editarUsuario(Usuario usuario) {
